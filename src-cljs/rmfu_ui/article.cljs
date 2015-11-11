@@ -1,7 +1,11 @@
 (ns rmfu-ui.article
-  (:require [rmfu-ui.nav :refer [nav]]))
+  (:require [rmfu-ui.nav :refer [nav]]
+            [rmfu-ui.apicalls :refer [get-article]]
+            [reagent.session :as session]))
 
 (defn article []
+  (println (session/get :article-id))
+  (get-article (session/get :article-id))
   [:div
    [nav]
    [:div.container.jumbotron.largemain
