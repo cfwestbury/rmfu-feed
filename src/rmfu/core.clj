@@ -84,6 +84,9 @@
       (ok "Password updated!")
       (internal-server-error "Something went wrong with the password update."))))
 
+(defn get-article [id]
+  (println "hi"))
+
 (def auth-backend (jws-backend {:secret secret}))
 
 (defroutes* api-routes
@@ -108,6 +111,7 @@
             (GET "/reset-password-redirect/:email" [] reset-password-redirect)
             (PUT "/reset-password-from-form" [] reset-password-from-form!)
             (GET "/verify-email/:email" [] verify-email)
+            (GET "/article/:id" [] get-article)
             (route/not-found (not-found "Resource not found")))
 
 (defroutes app-routes
